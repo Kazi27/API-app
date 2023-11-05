@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 
 const YourComponent = () => {
   const [memberName, setMemberName] = useState('');
+  const [gender, setGender] = useState(null);
   const [partyInfo, setPartyInfo] = useState(null);
   const [fullMemberName, setFullMemberName] = useState(null);
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+
+
 
   const fetchPartyData = async (name) => {
     setIsLoading(true);
@@ -22,7 +26,10 @@ const YourComponent = () => {
       if (data.items && data.items.length > 0) {
         const member = data.items[0].value;
         const fullName = member.nameFullTitle; 
+        const memberGender = member.gender;
+
         const party = member.latestParty.name;
+        setGender(memberGender);
         setPartyInfo(party);
         setFullMemberName(fullName);
       } else {
@@ -78,6 +85,13 @@ const YourComponent = () => {
           <p>Full Member Name: {fullMemberName}</p>
         </div>
       )}
+      {
+        gender && (
+          <div>
+            <p>Member Gender: {gender}</p>
+          </div>
+        )
+      }
     </div>
   );
 };
