@@ -11,11 +11,15 @@ body {
 h1 {
   margin-top: 0;
   font-size: 22px;
+  justify-content: center;
+  display: flex;
 }
 
 h2 {
   margin-top: 0;
   font-size: 20px;
+  justify-content: center;
+  display: flex;
 }
 
 h3 {
@@ -87,4 +91,32 @@ body {
 
 .game-info {
   margin-left: 20px;
+}
+
+.image-container 
+{
+  display: flex; 
+}
+
+.image-container img {
+  max-width: 50%; 
+  height: auto; 
+  margin-right: 1px; 
+}
+
+.introText {
+  display: flex;
+  justify-content: center;
+}
+
+.introText h3 {
+  margin-top: 5px;
+  justify-content: center;
+  max-width: 50%;
+} 
+
+.linkText {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
