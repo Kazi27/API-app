@@ -99,9 +99,9 @@ body {
 }
 
 .image-container img {
-  max-width: 50%; /* Set a maximum width to fit within the container */
-  height: auto; /* Maintain the aspect ratio of the images */
-  margin-right: 1px; /* Add some spacing between the images */
+  max-width: 50%; 
+  height: auto; 
+  margin-right: 1px; 
 }
 
 .introText {
@@ -113,4 +113,10 @@ body {
   margin-top: 5px;
   justify-content: center;
   max-width: 50%;
+} 
+
+.linkText {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
