@@ -5,7 +5,7 @@ const YourComponent = () => {
   const [gender, setGender] = useState(null);
   const [partyInfo, setPartyInfo] = useState(null);
   const [fullMemberName, setFullMemberName] = useState(null);
-
+  const [latestMembership, setLatestMembership] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -24,11 +24,18 @@ const YourComponent = () => {
   
       // Check if the response contains items
       if (data.items && data.items.length > 0) {
+        // parsing the data about the party member
         const member = data.items[0].value;
         const fullName = member.nameFullTitle; 
         const memberGender = member.gender;
-
         const party = member.latestParty.name;
+        const recentMembership = member.latestHouseMembership.membershipFrom;
+
+
+
+
+
+        setLatestMembership(recentMembership);
         setGender(memberGender);
         setPartyInfo(party);
         setFullMemberName(fullName);
@@ -89,6 +96,13 @@ const YourComponent = () => {
         gender && (
           <div>
             <p>Member Gender: {gender}</p>
+          </div>
+        )
+      }
+      {
+        latestMembership && (
+          <div>
+            <p>Latest Membership: {latestMembership}</p>
           </div>
         )
       }
