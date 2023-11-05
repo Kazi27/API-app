@@ -6,6 +6,7 @@ const YourComponent = () => {
   const [partyInfo, setPartyInfo] = useState(null);
   const [fullMemberName, setFullMemberName] = useState(null);
   const [latestMembership, setLatestMembership] = useState(null);
+  const [startDate, setStartDate] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -30,11 +31,12 @@ const YourComponent = () => {
         const memberGender = member.gender;
         const party = member.latestParty.name;
         const recentMembership = member.latestHouseMembership.membershipFrom;
+        const startTime = member.latestHouseMembership.membershipStartDate;
 
 
 
 
-
+        setStartDate(startTime);
         setLatestMembership(recentMembership);
         setGender(memberGender);
         setPartyInfo(party);
@@ -103,6 +105,13 @@ const YourComponent = () => {
         latestMembership && (
           <div>
             <p>Latest Membership: {latestMembership}</p>
+          </div>
+        )
+      }
+      {
+        startDate && (
+          <div>
+            <p>Membership Start Date: {startDate}</p>
           </div>
         )
       }
