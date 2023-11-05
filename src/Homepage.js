@@ -1,7 +1,7 @@
 import React from 'react';
 import UKParliamentImage from './UKParliament.png';
 import USCongressImage from './USCongress.png';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; //imports link component from the library
 
 function Homepage() 
 {
@@ -27,6 +27,7 @@ function Homepage()
 
     </div>
   );
+  //the linktext both of them are jsx components <link>, the to specifies the url and the text is just clickable. They basically creating links that navigates to their specific route when clicked
 }
 
 export default Homepage;
