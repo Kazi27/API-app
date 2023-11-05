@@ -1,65 +1,85 @@
 import React, { useState } from 'react';
 
-function Parliament() {
-  const [location, setLocation] = useState('');
-  const [parliamentInfo, setParliamentInfo] = useState(null);
+const YourComponent = () => {
+  const [memberName, setMemberName] = useState('');
+  const [partyInfo, setPartyInfo] = useState(null);
+  const [fullMemberName, setFullMemberName] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchParliamentData = async (Location) => {
+  const fetchPartyData = async (name) => {
     setIsLoading(true);
-    setError(null); // Reset errors
-
+    setError(null);
+  
     try {
-      // Replace `API_ENDPOINT` with your actual API endpoint
-      const response = await fetch(`https://members-api.parliament.uk/api/Location/Browse/0/Location%20 ${encodeURIComponent(Location)}`);
+      const response = await fetch(`https://members-api.parliament.uk/api/Members/Search?Name=${encodeURIComponent(name)}&skip=0&take=20`);
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`); // or handle based on response.status
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      setParliamentInfo(data);
+  
+      // Check if the response contains items
+      if (data.items && data.items.length > 0) {
+        const member = data.items[0].value;
+        const fullName = member.nameFullTitle; 
+        const party = member.latestParty.name;
+        setPartyInfo(party);
+        setFullMemberName(fullName);
+      } else {
+        setError('Party information not found for this member.');
+      }
     } catch (e) {
-      setError(`Failed to fetch data: ${e.message}`);
+      if (e.name === "TypeError" && e.message === "Failed to fetch") {
+        setError("Network error. Please check your internet connection.");
+      } else {
+        setError(`Failed to fetch data: ${e.message}`);
+      }
       console.error(e);
     }
-
+  
     setIsLoading(false);
   };
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetchParliamentData(location);
+    fetchPartyData(memberName);
   };
 
-  const handleLocationChange = (event) => {
-    setLocation(event.target.value);
+  const handleMemberNameChange = (event) => {
+    setMemberName(event.target.value);
   };
 
   return (
     <div>
-      <h1>Parliament Page</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          Enter location:
+          Member Name:
           <input
             type="text"
-            value={location}
-            onChange={handleLocationChange}
+            value={memberName}
+            onChange={handleMemberNameChange}
           />
         </label>
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? 'Loading...' : 'Get Parliament Info'}
-        </button>
+        <button type="submit">Search Party</button>
       </form>
+
+      {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      {parliamentInfo && (
+      
+      {partyInfo && (
         <div>
-          {/* Render your parliament information here */}
-          <pre>{JSON.stringify(parliamentInfo, null, 2)}</pre>
+          <h2>Party Information</h2>
+          <p>Party: {partyInfo}</p>
+        </div>
+      )}
+      {fullMemberName && (
+        <div>
+          <p>Full Member Name: {fullMemberName}</p>
         </div>
       )}
     </div>
   );
-}
+};
 
-export default Parliament;
+export default YourComponent;
