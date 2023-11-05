@@ -52,6 +52,7 @@ const YourComponent = () => {
 
   return (
     <div>
+      <h2>Party Information</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Member Name:
@@ -69,7 +70,6 @@ const YourComponent = () => {
       
       {partyInfo && (
         <div>
-          <h2>Party Information</h2>
           <p>Party: {partyInfo}</p>
         </div>
       )}
