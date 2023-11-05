@@ -6,10 +6,12 @@ const YourComponent = () => {
   const [partyInfo, setPartyInfo] = useState(null);
   const [fullMemberName, setFullMemberName] = useState(null);
   const [latestMembership, setLatestMembership] = useState(null);
-  const [membershipEnd, setMembershipEnd] = useState(null);
   const [startDate, setStartDate] = useState(null);
+  const [membershipEnd, setMembershipEnd] = useState(null);
+  const [membershipStatus, setMembershipStatus] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  
 
 
 
@@ -34,9 +36,10 @@ const YourComponent = () => {
         const recentMembership = member.latestHouseMembership.membershipFrom;
         const startTime = member.latestHouseMembership.membershipStartDate;
         const endTime = member.latestHouseMembership.membershipEndDate;
+        const statusOfMembership = member.latestHouseMembership.membershipStatus.statusDescription;
 
 
-
+        setMembershipStatus(statusOfMembership);
         setMembershipEnd(endTime);
         setStartDate(startTime);
         setLatestMembership(recentMembership);
@@ -121,6 +124,13 @@ const YourComponent = () => {
         membershipEnd && (
           <div>
             <p>Latest Membership End Date: {membershipEnd}</p>
+          </div>
+        )
+      }
+      {
+        membershipStatus && (
+          <div>
+            <p>Membership Status: {membershipStatus}</p>
           </div>
         )
       }
