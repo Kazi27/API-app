@@ -96,7 +96,7 @@ return (
 <div>
   {/* displays the header of the page (Party Information) */}
   <h2>Party Information</h2>
-  <h3>Parliament Name Examples: Rishi Sunak, Keir Starmer, Suella Braverman, Grant Shapps, ETC </h3>
+  <h3>Parliament Name Examples: Rishi Sunak, Keir Starmer, Suella Braverman, Grant Shapps etc </h3>
 
   {/* Input field where the user must input a valid parliament members name and click search. If present in the api, information about the party member is present.  */}
   <form onSubmit={handleSubmit}>
