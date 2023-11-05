@@ -5,6 +5,7 @@ function Parliament()
     return (
         <div>
           <h1>Parliament Page</h1>
+          <p>RAHEEZY TEST</p>
         </div>
       );
 }
