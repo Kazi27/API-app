@@ -4,6 +4,10 @@ function Congress()
 {
   const [memberName, setMemberName] = useState('L000174');
   const [fullMemberName, setFullMemberName] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
+  const [usState, setUSstate] = useState("");
+  const [party, setParty] = useState("");
+  const [memberType, setMemberType] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -29,8 +33,17 @@ function Congress()
         // parsing the data about Congress Member
         const member = data.member;
         const fullName = member.directOrderName; 
- 
+        const photo = member.depiction.imageUrl;
+        const state = member.state;
+        const party = member.partyHistory[0].partyName;
+        const memberType = member.terms.pop().memberType;
+        
         setFullMemberName(fullName);
+        setImageUrl(photo);
+        setUSstate(state);
+        setParty(party);
+        setMemberType(memberType);
+
       } else {
         setError('No information not found for this member.');
       }
@@ -118,6 +131,16 @@ function Congress()
         <button type="submit">Search Name</button>
       </form>
 
+      {fullMemberName && (
+        <div>
+          <img src={imageUrl}/>
+          <p>Full Member Name: {fullMemberName}</p>
+          <p>Member Type: {memberType}</p>
+          <p>State: {usState}</p>
+          <p>Party: {party}</p>
+        </div>
+      )}
+
       <h2>Treaty Information</h2>
       <form onSubmit={handleTreatySubmit}>
         <label>
@@ -134,11 +157,6 @@ function Congress()
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
       
-      {fullMemberName && (
-        <div>
-          <p>Full Member Name: {fullMemberName}</p>
-        </div>
-      )}
 
       {treatyData && (
         <div>
