@@ -14,6 +14,66 @@ const [membershipStatus, setMembershipStatus] = useState(null);
 //used for error handling and used in cases where the inputted name is blank or not a part of the api dataset 
 const [error, setError] = useState(null);
 
+//New states for treaties
+const [treatySearchText, setTreatySearchText] = useState('');
+const [treatyInfo, setTreatyInfo] = useState(null);
+const [treatyError, setTreatyError] = useState(null);
+
+//traties
+const fetchTreatyData = async (searchText) => {
+  try {
+    const response = await fetch(`https://treaties-api.parliament.uk/api/Treaty?SearchText=${encodeURIComponent(searchText)}`);
+    const data = await response.json();
+
+    if (data && data.length > 0) {
+      // Assuming the response structure contains an array of treaties
+      setTreatyInfo(data);
+      setTreatyError(null);
+    } else {
+      setTreatyError('No treaty information found for this search.');
+      setTreatyInfo(null);
+    }
+  } catch (error) {
+    console.error(error);
+    setTreatyError('Failed to fetch treaty information.');
+    setTreatyInfo(null);
+  }
+};
+
+const handleTreatySearchSubmit = (event) => {
+  event.preventDefault();
+  fetchTreatyData(treatySearchText);
+};
+
+
+const handleTreatySearchTextChange = (event) => {
+  setTreatySearchText(event.target.value);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // function to perform an HTTP GET request from the Parliament API
@@ -92,88 +152,56 @@ const handleMemberNameChange = (event) => {
 setMemberName(event.target.value);
 };
 
+
 return (
-<div>
-  {/* displays the header of the page (Party Information) */}
-  <h2>Party Information</h2>
-  <h3>Parliament Name Examples: Rishi Sunak, Keir Starmer, Suella Braverman, Grant Shapps etc </h3>
+  <div>
+    {/* Parliament Member Information Section */}
+    <h2>Party Information</h2>
+    <h3>Parliament Name Examples: Rishi Sunak, Keir Starmer, Suella Braverman, Grant Shapps etc.</h3>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Input Parliament Member's Name:
+        <input
+          type="text"
+          value={memberName}
+          onChange={handleMemberNameChange}
+        />
+      </label>
+      <button type="submit">Display Info</button>
+    </form>
 
-  {/* Input field where the user must input a valid parliament members name and click search. If present in the api, information about the party member is present.  */}
-  <form onSubmit={handleSubmit}>
-    <label>
-      Input Parliament Member's Name: 
-      <input
-        type="text"
-        value={memberName}
-        onChange={handleMemberNameChange}
-      />
-    </label>
-    <button type="submit"> Display Info</button>
-  </form>
+    {/* Display errors or member information if available */}
+    {error && <p>Error: {error}</p>}
+    {/* ... other member details displayed here ... */}
 
-  
+    {/* New Treaty Information Section */}
+    <h2>Treaty Information</h2>
+    <form onSubmit={handleTreatySearchSubmit}>
+      <label>
+        Search for a Treaty:
+        <input
+          type="text"
+          value={treatySearchText}
+          onChange={handleTreatySearchTextChange}
+        />
+      </label>
+      <button type="submit">Search Treaty</button>
+    </form>
 
-
-
-  {/* This section displays the member's 
-  full name
-  party
-  gender
-  latestmembership placement
-  latest membership start date
-  latest membership end date if they are not currently in office
-  membership status
-  
-  */}
-  {error && <p>Error: {error}</p>}
-  {fullMemberName && (
-    <div>
-      <p>Full Name: {fullMemberName}</p>
-    </div>
-  )}
-  
-  {partyInfo && (
-    <div>
-      <p>Party: {partyInfo}</p>
-    </div>
-  )}
-  {
-    gender && (
+    {/* Display errors or treaty information if available */}
+    {treatyError && <p>Error: {treatyError}</p>}
+    {treatyInfo && (
       <div>
-        <p>Gender: {gender}</p>
+        {treatyInfo.map((treaty, index) => (
+          <div key={index}>
+            <p>Title: {treaty.title}</p>
+          </div>
+        ))}
       </div>
-    )
-  }
-  {
-    latestMembership && (
-      <div>
-        <p>Latest Membership Placement: {latestMembership}</p>
-      </div>
-    )
-  }
-  {
-    startDate && (
-      <div>
-        <p>Latest Membership Start Date: {startDate}</p>
-      </div>
-    )
-  }
-  {
-    membershipEnd && (
-      <div>
-        <p>Latest Membership End Date: {membershipEnd}</p>
-      </div>
-    )
-  }
-  {
-    membershipStatus && (
-      <div>
-        <p>Membership Status: {membershipStatus}</p>
-      </div>
-    )
-  }
-</div>
+    )}
+  </div>
 );
-};
 
+
+        }
 export default Parliament;
