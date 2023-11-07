@@ -73,33 +73,29 @@ function Congress()
   const fetchTreatyData = async (input) => {
     setIsLoading(true);
     setError(null);
-
+  
     try {
-      const response = await fetch(`https://api.congress.gov/v3/treaty?api_key=${process.env.REACT_APP_API_KEY}&input=${encodeURIComponent(input)}`);
+      //const response = await fetch(`https://api.congress.gov/v3/member/${encodeURIComponent(name)}?api_key=${process.env.REACT_APP_API_KEY}`);
+      const response = await fetch(`https://api.congress.gov/v3/treaty/${encodeURIComponent(input)}?api_key=${process.env.REACT_APP_API_KEY}`);
+      //const response = await fetch(`https://api.congress.gov/v3/treaty?api_key=${process.env.REACT_APP_API_KEY}&q=${encodeURIComponent(input)}`);
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-
-      // Check if the response contains items
+  
       if (data.treaties && data.treaties.length > 0) {
-        // Parsing the data about treaties
         const treaty = data.treaties[0];
         const treatySubject = treaty.treatySubject;
-
         setTreatyData(treatySubject);
       } else {
         setError('No information found for this treaty input.');
       }
     } catch (e) {
-      if (e.name === "TypeError" && e.message === "Failed to fetch") {
-        setError("Network error. Please check your internet connection.");
-      } else {
-        setError(`Failed to fetch treaty data: ${e.message}`);
-      }
       console.error(e);
+      setError(`Failed to fetch treaty data: ${e.message}`);
     }
-
+  
     setIsLoading(false);
   };
 
