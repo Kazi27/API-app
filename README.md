@@ -2,8 +2,6 @@
 
 A website by the Lally Enthusiasts
 
-![US Congress](USCongress.png) ![UK Parliament](UKParliament.png)
-
 ## Project Description
 
 The US Congress & The UK Parliament website is a dynamic React-based web application that calls APIs from two distinct sources: the Congress API and the Parliament API. The website compares information between the members and treaties of the United States Congress and members and treaties of the UK Parliament. Users can search for specific members and retrieve details about their respective legislatures.
@@ -18,13 +16,17 @@ The US Congress & The UK Parliament website is a dynamic React-based web applica
 
 ### 1. Congress API
 
-- **API Provider:** [congress.gov](https://www.loc.gov/apis/additional-apis/congress-dot-gov-api/)
-- **Description:** The Congress API provides information about members of the United States Congress.
+- **API Provider:** [congress.gov](https://www.loc.gov/apis/additional-apis/congress-dot-gov-api/ )
+- **Extra Documentation:** [Congress BriefEndpointsDocumentation.md](https://github.com/LibraryOfCongress/api.congress.gov/blob/main/Documentation/BriefEndpointsDocumentation.md#treaty)
+- **Description:** The Congress API provides information about members and treaties of the United States Congress.
+- **Postman:** attach screenshot
 
 ### 2. Parliament API
 
 - **API Provider:** [members-api.parliament.uk](https://members-api.parliament.uk/index.html)
-- **Description:** The Parliament API offers data about members of the UK Parliament.
+- **Extra Documentation:** [Parliament Developer Hub](https://developer.parliament.uk/)
+- **Description:** The Parliament API offers data about members and treaties of the UK Parliament.
+- **Postman:** attach screenshot
 
 ### API Implementation
 
@@ -53,6 +55,8 @@ The US Congress & The UK Parliament website is a dynamic React-based web applica
 - **Government Entity API:** The Congress API is from a government entity (.gov), aligning with the requirement to use an API from a government entity.
 
 - **Coherent Data Rendering:** Our website seamlessly combines data from both Congress and Parliament APIs, allowing users to compare information about different legislatures.
+
+- **An Amazing ReadMe:** It's awesome.
 
 ## GitHub Workflow
 
