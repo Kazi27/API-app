@@ -66,7 +66,7 @@ function Congress()
     
     catch (e) 
     {
-      if (e.name === "TypeError" && e.message === "Failed to fetch") //netwrok error catch
+      if (e.name === "TypeError" && e.message === "Failed to fetch") //network error catch
       {
         setError("Network error. Please check your internet connection.");
       } 
@@ -79,7 +79,7 @@ function Congress()
       console.error(e); //log it
     }
   
-    setIsLoading(false); //fasle if u encounter an error
+    setIsLoading(false); //false if u encounter an error
   };
 
   const handleSubmit = (event) => 
@@ -103,9 +103,7 @@ function Congress()
     try 
     {
       //fetch data from the API, env file stores the api key
-      //const response = await fetch(`https://api.congress.gov/v3/member/${encodeURIComponent(name)}?api_key=${process.env.REACT_APP_API_KEY}`);
       const response = await fetch(`https://api.congress.gov/v3/treaty/${encodeURIComponent(input)}?api_key=${process.env.REACT_APP_API_KEY}`);
-      //const response = await fetch(`https://api.congress.gov/v3/treaty?api_key=${process.env.REACT_APP_API_KEY}&q=${encodeURIComponent(input)}`);
 
       if (!response.ok) //is api call successful
       {
@@ -119,11 +117,6 @@ function Congress()
         const treaty = data.treaties[0];
         const treatySubject = treaty.treatySubject;
         const transmittedDate = treaty.transmittedDate;
-        //const ratifiedCongress = treaty.ratifiedCongress; encoded in CDATA file and idk how to parse through that
-
-        // setTreatyData(treatySubject, transmittedDate, ratifiedCongress);
-        // setTreatyTrans(transmittedDate);
-        // setTreatyRat(ratifiedCongress);
 
         setTreatyData({treatySubject, transmittedDate,}); //set treaty as an obj, removed ratifiedCongress,
       } 
@@ -150,27 +143,34 @@ function Congress()
     fetchTreatyData(treatyInput);
   };
 
-  //vvent handler for updating the treaty input field
+  //event handler for updating the treaty input field
   const handleTreatyInputChange = (event) => 
   {
     setTreatyInput(event.target.value);
   };
   
     return (
+      <div className="center-container">
       <div>
-        <h1>Congress Page</h1>
+        <h1>United States Congress Page</h1>
 
-        <h2>Party Information</h2>
+        <h3>Congress Member Information</h3>
+        <p>What to input?</p>
+        <p>There exisit a unique identification for each member of Congress. This is the BioGuide ID from the Biographical Directory of Congress: <a href="http://bioguide.congress.gov">bioguide.congress.gov</a> It is alphanumeric and begins with the first letter of the Member's last name, followed by six (6) numeric digits. </p>
+
+        <h5> Sample inputs: K000377, L000174, W000817, S001191, T000278</h5>
       <form onSubmit={handleSubmit}>
+      <div className="member-name-section">
         <label>
-          Congress Member Name:
+          Enter Congress Member BioGuide ID:   
           <input
             type="text"
             value={memberName}
             onChange={handleMemberNameChange}
           />
         </label>
-        <button type="submit">Search Name</button>
+        <button type="submit">Search</button>
+      </div>
       </form>
 
       {fullMemberName && (
@@ -183,17 +183,27 @@ function Congress()
         </div>
       )}
 
-      <h2>Treaty Information</h2>
+      <br></br>
+
+      <br></br>
+      <br></br>
+      <h3>Treaty Information</h3>
+      <p>What to input?</p>
+      <p>When CSPAN or any other broadcasting network mentions that you are watching the 116th Congress in session, it means that they are broadcasting or airing live or recorded sessions of the legislative body. The number refers to the specific congressional session that was in operation during a certain period. In the context of the United States, the U.S. Congress operates in two-year periods called sessions, and each session is numbered consecutively.</p>
+      <h5> Possible inputs: Congressional Sessions 91 through 117</h5>
+      <p>Note: During some congressional sessions treaties may not have been enacted</p>
       <form onSubmit={handleTreatySubmit}>
+      <div className="member-name-section">
         <label>
-          Congress Treaty Information:
+          Enter Congressional Session Number:
           <input
             type="text"
             value={treatyInput}
             onChange={handleTreatyInputChange}
           />
         </label>
-        <button type="submit">Search Treaty</button>
+        <button type="submit">Search</button>
+      </div>
       </form>
 
       {isLoading && <p>Loading...</p>}
@@ -211,6 +221,7 @@ function Congress()
         </div>
       )}
 
+      </div>
       </div>
     );
 }
