@@ -23,7 +23,8 @@ const Parliament = () => {
     try {
       const response = await fetch(`https://treaties-api.parliament.uk/api/Treaty?SearchText=${encodeURIComponent(treaty)}`);
       const data = await response.json();
-  
+      console.log(data); // Log the response for debugging
+
       if (data.items && data.items.length > 0) {
         // Assuming we are interested in the first treaty found
         const treatyData = data.items[0].value;
@@ -134,6 +135,8 @@ const Parliament = () => {
 
       <h2>Treaty Information</h2>
       <h3>Treaty Name Examples: Treaty of Rome, Treaty of Lisbon etc</h3>
+      <h3>Union, paris, Brussels</h3>
+
       <form onSubmit={handleSubmitTreaty}>
         <label>
           Input Treaty Name:
