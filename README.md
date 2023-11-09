@@ -1,4 +1,4 @@
-# The US Congress & The UK Parliament
+#  🏛 The US Congress & The UK Parliament
 
 A website by the Lally Enthusiasts
 
@@ -19,14 +19,22 @@ The US Congress & The UK Parliament website is a dynamic React-based web applica
 - **API Provider:** [congress.gov](https://www.loc.gov/apis/additional-apis/congress-dot-gov-api/ )
 - **Extra Documentation:** [Congress BriefEndpointsDocumentation.md](https://github.com/LibraryOfCongress/api.congress.gov/blob/main/Documentation/BriefEndpointsDocumentation.md#treaty)
 - **Description:** The Congress API provides information about members and treaties of the United States Congress.
-- **Postman:** attach screenshot
+- **Postman:** 
+<div>
+    <img src="src/assets/images/US_members.png" style="width: 45%; height: auto; display: inline-block;" />
+    <img src="src/assets/images/US_treaties.png" style="width: 45%; height: auto; display: inline-block;" />
+</div>
 
 ### 2. Parliament API
 
 - **API Provider:** [members-api.parliament.uk](https://members-api.parliament.uk/index.html)
 - **Extra Documentation:** [Parliament Developer Hub](https://developer.parliament.uk/)
 - **Description:** The Parliament API offers data about members and treaties of the UK Parliament.
-- **Postman:** attach screenshot
+- **Postman:** 
+<div>
+    <img src="src/assets/images/uk_members.png" style="width: 45%; height: auto; display: inline-block;" />
+    <img src="src/assets/images/uk_lords.png" style="width: 45%; height: auto; display: inline-block;" />
+</div>
 
 ### API Implementation
 
