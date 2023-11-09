@@ -1,5 +1,5 @@
 {
-  "homepage": "http://Kazi27.github.io/API-app",
+  "homepage": "https://Kazi27.github.io/API-app",
   "dependencies": {
     "axios": "^1.6.0",
     "react": "^18.0.0",
@@ -7,7 +7,7 @@
     "react-router-dom": "^6.18.0",
     "react-scripts": "^5.0.0"
   },
-  "main": "/index.js",
+  "main": "index.js",
   "name": "vy6j3f",
   "description": null,
   "version": "0.0.0",
