@@ -1,4 +1,4 @@
-#  🏛 The US Congress & The UK Parliament
+#  🏛 The US Congress & The UK Parliament 🏛
 
 A website by the Lally Enthusiasts
 
@@ -10,7 +10,7 @@ The US Congress & The UK Parliament website is a dynamic React-based web applica
 
 - **Congress Page:** Allows users to search for members of the United States Congress by their unique BioGuide ID from the Biographical Directory of Congress. It provides information such as full name, member type, state, and party affiliation. It also has a treaty search feature where the user can input a treaty number to retrieve the transmitted date and treaty subject. 
 
-- **Parliament Page:** Enables users to search for members of the UK Parliament by their names. It displays details like full name, gender, party, latest membership placement, start date, end date (if not in office), and membership status. [[complete this after treaty]]
+- **Parliament Page:** Enables users to search for members of the UK Parliament by their names. It displays details like full name, gender, party, latest membership placement, start date, end date (if not in office), and membership status. It displays the registered interests based on the users input and displays members or individuals who have an interest or association with that particular search term.
 
 ## APIs Used
 
@@ -48,7 +48,7 @@ The US Congress & The UK Parliament website is a dynamic React-based web applica
 
 - **Member Search:** Users can search for UK Parliament members by their names.
 - **Information Display:** The website sends an HTTP GET request to the Parliament API, retrieves data, and displays it. This data includes full names, genders, party affiliations, membership placements, start dates, end dates (if applicable), and membership statuses.
-- **Treaty Feature:** Working on this
+- **Registered Interests:** Users can search for members' registered interests based on specific search terms. The website retrieves the list of members with interests related to the search term and displays their names.
 
 ### Extra Credit
 
@@ -69,5 +69,5 @@ The US Congress & The UK Parliament website is a dynamic React-based web applica
 ## GitHub Workflow
 
 Each team member has authored at least one pull request (PR) containing a feature with an API call. All code changes were made using the feature branch workflow, app is deployed on GitHub Pages. Each PR received at least one approval from a teammate before being merged and we actively reviewed and contributed to each other's PRs because the Lally Enthusiasts support each other through thick and thin.
-- The repository link is 
+- The repository link is https://github.com/Kazi27/API-app.git
 - The website link is 
