@@ -15,9 +15,9 @@ The US Congress & The UK Parliament website is a dynamic React-based web applica
 ## APIs Used
 
 ### 1. Congress API
-
+- **Name:** Congress API
 - **API Provider:** [congress.gov](https://www.loc.gov/apis/additional-apis/congress-dot-gov-api/ )
-- **Extra Documentation:** [Congress BriefEndpointsDocumentation.md](https://github.com/LibraryOfCongress/api.congress.gov/blob/main/Documentation/BriefEndpointsDocumentation.md#treaty)
+- **Extra Documentation:** [Congress Brief Endpoints Documentation](https://github.com/LibraryOfCongress/api.congress.gov/blob/main/Documentation/BriefEndpointsDocumentation.md#treaty)
 - **Description:** The Congress API provides information about members and treaties of the United States Congress.
 - **Postman:** 
 <div>
@@ -26,7 +26,7 @@ The US Congress & The UK Parliament website is a dynamic React-based web applica
 </div>
 
 ### 2. Parliament API
-
+- **Name:** Parliament API
 - **API Provider:** [members-api.parliament.uk](https://members-api.parliament.uk/index.html)
 - **Extra Documentation:** [Parliament Developer Hub](https://developer.parliament.uk/)
 - **Description:** The Parliament API offers data about members and treaties of the UK Parliament.
@@ -43,12 +43,14 @@ The US Congress & The UK Parliament website is a dynamic React-based web applica
 - **Member Search:** Users can search for Congress members by their BioGuide ID, which is a unique identification for each member.
 - **Information Display:** Upon searching, the website fetches data from the Congress API, including the full member name, member type, state, party, and an image. This data is then displayed on the page.
 - **Treaty Search:** Users can search for treaties using a treaty number, retrieving details such as treaty subject and transmitted date.
+- **Issues we encountered:** The main issue we encountered was parsing through the data received based on the user input and also displaying it as the results overlapped. Furthermore we had to use the react router in homepage.js to link it to the congress page and parliament page for a more cohesive look. This was the skeleton of the website but this came to cause a github issue when we tried to push it onto github pages because of the reach router which we discovered after we completed the parliament page.
 
 #### Parliament Page
 
 - **Member Search:** Users can search for UK Parliament members by their names.
 - **Information Display:** The website sends an HTTP GET request to the Parliament API, retrieves data, and displays it. This data includes full names, genders, party affiliations, membership placements, start dates, end dates (if applicable), and membership statuses.
 - **Registered Interests:** Users can search for members' registered interests based on specific search terms. The website retrieves the list of members with interests related to the search term and displays their names.
+- **Issues we encountered:** The maiin issue we encountered was how to parse for treaties as it was restricted by the API itself so we settled for the second best comparison to treaties, registered interests. The biggest issue was to publish to github pages because we had a .env to store the API key so the environmental variable had an issue with the gitignore, gitguard and the react router routed all npm start and npm deploy commands to localhost3000/API-App instead of local host 3000 so we had to change that in App.js to fix it. All the commits to main were us debugging the github pages issue by trying a capital K instead of k, HTTP instead of HTTPs and following a lot of videos and articles till we solved it.
 
 ### Extra Credit
 
