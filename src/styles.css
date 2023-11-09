@@ -10,6 +10,52 @@ body {
   background-color: #f4f4f4;
 }
 
+h1 {
+  margin-top: 15;
+  font-size: 22px;
+  justify-content: center;
+  display: flex;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 20px;
+  justify-content: center;
+  display: flex;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+h4 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+h5 {
+  margin-top: 0;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+h6 {
+  margin-top: 0;
+  font-size: 12px;
+}
+
+.image-container 
+{
+  display: flex; 
+}
+
+.image-container img {
+  max-width: 50%; 
+  height: auto; 
+  margin-right: 1px; 
+}
+
 /* Utility Classes */
 .flex-center {
   display: flex;
@@ -133,11 +179,11 @@ h5 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center; /* Center text within the container. */
+  text-align: center; /* center text within container. */
 }
 
 .member-name-section {
-  padding: 14px; /* Adjust the padding size as needed */
+  padding: 14px; 
 }
 
 .parliament-input {
