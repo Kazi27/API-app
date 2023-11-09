@@ -1,35 +1,35 @@
+/* Global Styles */
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: sans-serif;
-  margin: 20px;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
   padding: 0;
+  background-color: #f4f4f4;
 }
 
-h1 {
-  margin-top: 0;
-  font-size: 22px;
-  justify-content: center;
+/* Utility Classes */
+.flex-center {
   display: flex;
-}
-
-h2 {
-  margin-top: 0;
-  font-size: 20px;
   justify-content: center;
+  align-items: center;
+}
+
+.flex-column {
   display: flex;
+  flex-direction: column;
 }
 
-h3 {
-  margin-top: 0;
-  font-size: 18px;
-}
-
-h4 {
-  margin-top: 0;
-  font-size: 16px;
+/* Component Specific Styles */
+.parliament-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h5 {
@@ -38,71 +38,77 @@ h5 {
   margin-bottom: 0;
 }
 
-h6 {
-  margin-top: 0;
-  font-size: 12px;
+.parliament-heading {
+  font-size: 22px;
+  color: #333;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 20px;
 }
 
-code {
-  font-size: 1.2em;
+.parliament-form {
+  margin-bottom: 30px;
 }
 
-ul {
-  padding-inline-start: 20px;
+.parliament-label {
+  font-size: 18px;
+  color: #555;
 }
 
-* {
-  box-sizing: border-box;
+.parliament-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
-body {
-  font-family: sans-serif;
-  margin: 20px;
+.parliament-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #005ea5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.parliament-button:hover {
+  background-color: #003f6a;
+}
+
+.parliament-error {
+  color: #e74c3c;
+  font-size: 16px;
+}
+
+.parliament-info {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.parliament-interests-list {
+  list-style: none;
   padding: 0;
 }
 
-.square {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
-  text-align: center;
-  width: 34px;
+.parliament-interests-item {
+  padding: 10px;
+  margin-bottom: 5px;
+  background: #eef;
+  border-left: 3px solid #55a;
 }
 
-.board-row:after {
-  clear: both;
-  content: '';
-  display: table;
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .parliament-container {
+    width: 90%;
+  }
 
-.status {
-  margin-bottom: 10px;
-}
-.game {
-  display: flex;
-  flex-direction: row;
-}
-
-.game-info {
-  margin-left: 20px;
-}
-
-.image-container 
-{
-  display: flex; 
-}
-
-.image-container img {
-  max-width: 50%; 
-  height: auto; 
-  margin-right: 1px; 
+  .parliament-heading {
+    font-size: 20px;
+  }
 }
 
 .introText {
@@ -132,4 +138,13 @@ body {
 
 .member-name-section {
   padding: 14px; /* Adjust the padding size as needed */
+}
+
+.parliament-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Added box shadow here */
 }
