@@ -70,4 +70,4 @@ The US Congress & The UK Parliament website is a dynamic React-based web applica
 
 Each team member has authored at least one pull request (PR) containing a feature with an API call. All code changes were made using the feature branch workflow, app is deployed on GitHub Pages. Each PR received at least one approval from a teammate before being merged and we actively reviewed and contributed to each other's PRs because the Lally Enthusiasts support each other through thick and thin.
 - The repository link is https://github.com/Kazi27/API-app.git
-- The website link is 
+- The website link is https://kazi27.github.io/API-app/
