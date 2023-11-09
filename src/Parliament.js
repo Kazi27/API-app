@@ -166,7 +166,7 @@ const resetMemberInfo = () => {
 
 {interests.length > 0 && (
   <div>
-    <p>Registered Interests:</p>
+    <p>Name of memebr with this interest:</p>
     <ul>
       {interests.map((interest, index) => (
         <li key={index}>{interest.value.member.nameFullTitle}</li>
