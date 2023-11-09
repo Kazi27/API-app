@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Kazi27/API-app.git/static/css/main.b1434a43.css",
+    "main.js": "/Kazi27/API-app.git/static/js/main.4a199dd1.js",
+    "static/media/UKParliament.png": "/Kazi27/API-app.git/static/media/UKParliament.060f913169533c6cf0ea.png",
+    "static/media/USCongress.png": "/Kazi27/API-app.git/static/media/USCongress.c1efe882c9eb710875d5.png",
+    "index.html": "/Kazi27/API-app.git/index.html",
+    "main.b1434a43.css.map": "/Kazi27/API-app.git/static/css/main.b1434a43.css.map",
+    "main.4a199dd1.js.map": "/Kazi27/API-app.git/static/js/main.4a199dd1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b1434a43.css",
+    "static/js/main.4a199dd1.js"
+  ]
+}
