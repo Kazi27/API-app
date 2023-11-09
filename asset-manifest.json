@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Kazi27/API-app/static/css/main.b1434a43.css",
-    "main.js": "/Kazi27/API-app/static/js/main.aa74a52a.js",
-    "static/media/UKParliament.png": "/Kazi27/API-app/static/media/UKParliament.060f913169533c6cf0ea.png",
-    "static/media/USCongress.png": "/Kazi27/API-app/static/media/USCongress.c1efe882c9eb710875d5.png",
-    "index.html": "/Kazi27/API-app/index.html",
-    "main.b1434a43.css.map": "/Kazi27/API-app/static/css/main.b1434a43.css.map",
-    "main.aa74a52a.js.map": "/Kazi27/API-app/static/js/main.aa74a52a.js.map"
+    "main.css": "/API-app/static/css/main.b1434a43.css",
+    "main.js": "/API-app/static/js/main.07f198d6.js",
+    "static/media/UKParliament.png": "/API-app/static/media/UKParliament.060f913169533c6cf0ea.png",
+    "static/media/USCongress.png": "/API-app/static/media/USCongress.c1efe882c9eb710875d5.png",
+    "index.html": "/API-app/index.html",
+    "main.b1434a43.css.map": "/API-app/static/css/main.b1434a43.css.map",
+    "main.07f198d6.js.map": "/API-app/static/js/main.07f198d6.js.map"
   },
   "entrypoints": [
     "static/css/main.b1434a43.css",
-    "static/js/main.aa74a52a.js"
+    "static/js/main.07f198d6.js"
   ]
 }
