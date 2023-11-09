@@ -157,11 +157,15 @@ function Congress()
   };
   
     return (
+      <div className="center-container">
       <div>
         <h1>Congress Page</h1>
+        <h1>Conter divs unless centered already, make it look nice, gray background or something, upto you jsut make it look good</h1>
 
-        <h2>Party Information</h2>
+        <h3>Party Information</h3>
+        <h5> Possible inputs: K000377, L000174, include the screenshot or just rewrite it, explain what a bioguideid is and hwo to make it</h5>
       <form onSubmit={handleSubmit}>
+      <div className="member-name-section">
         <label>
           Congress Member Name:
           <input
@@ -171,6 +175,7 @@ function Congress()
           />
         </label>
         <button type="submit">Search Name</button>
+      </div>
       </form>
 
       {fullMemberName && (
@@ -183,8 +188,10 @@ function Congress()
         </div>
       )}
 
-      <h2>Treaty Information</h2>
+      <h3>Treaty Information</h3>
+      <h5> Possible inputs: 99, somethig 80, 90 etc etc we need to find the range, 111, 112, 114, 116, 117</h5>
       <form onSubmit={handleTreatySubmit}>
+      <div className="member-name-section">
         <label>
           Congress Treaty Information:
           <input
@@ -194,6 +201,7 @@ function Congress()
           />
         </label>
         <button type="submit">Search Treaty</button>
+      </div>
       </form>
 
       {isLoading && <p>Loading...</p>}
@@ -211,6 +219,7 @@ function Congress()
         </div>
       )}
 
+      </div>
       </div>
     );
 }
