@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 const Parliament = () => {
   // State hooks for member data
@@ -174,6 +176,18 @@ const resetMemberInfo = () => {
     </ul>
   </div>
 )}
+<br></br>
+
+<br></br>
+<br></br>
+<div style={{ textAlign: 'center' }}>
+<p>I want to</p>
+</div>
+
+<div className="linkText">
+  <Link to="/congress">explore the US congress</Link>
+  <Link to="/homepage">go back to the homepage</Link>
+</div>
 
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Congress() 
 {
@@ -220,6 +221,15 @@ function Congress()
           
         </div>
       )}
+      <br></br>
+
+      <br></br>
+      <br></br>
+      <p>I want to</p>
+      <div className="linkText">
+        <Link to="/parliament">explore the UK parliament</Link>
+        <Link to="/homepage">go back to the homepage</Link>
+      </div>
 
       </div>
       </div>
