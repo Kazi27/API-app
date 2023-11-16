@@ -1,10 +1,9 @@
 import React from 'react';
 import UKParliamentImage from './UKParliament.png';
 import USCongressImage from './USCongress.png';
-import { Link } from 'react-router-dom'; //imports link component from the library
+import { Link, Outlet } from 'react-router-dom'; // import Outlet
 
-function Homepage() 
-{
+function Homepage() {
   return (
     <div className="homepage">
       <h1>The US Congress & The UK Parliament</h1>
@@ -21,13 +20,14 @@ function Homepage()
       </div>
       
       <div className="linkText">
-        <Link to="/congress">Find more information regarding the US Congress through the Congress API here.</Link>
-        <Link to="/parliament">Find more information regarding the UK Parliament through the Parliament API here.</Link>
+        <Link to="/API-app/congress">Find more information regarding the US Congress through the Congress API here.</Link>
+        <Link to="/API-app/parliament">Find more information regarding the UK Parliament through the Parliament API here.</Link>
       </div>
+
+      <Outlet /> {/* This is where the nested routes will render */}
 
     </div>
   );
-  //the linktext both of them are jsx components <link>, the to specifies the url and the text is just clickable. They basically creating links that navigates to their specific route when clicked
 }
 
 export default Homepage;

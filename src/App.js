@@ -1,24 +1,21 @@
 import React from 'react';
-import Homepage from './Homepage'; 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Homepage from './Homepage';
 import Congress from './Congress';
 import Parliament from './Parliament';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; //imports stuff from the react-router-dom library, browser router nicknamed router, route is the url, routes is conatiner
 
-function App() 
-{
+function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/homepage" element={<Homepage />} /> 
-          <Route path="/congress" element={<Congress />} />
-          <Route path="/parliament" element={<Parliament />} />
+          <Route path="/API-app" element={<Homepage />} />
+          <Route path="/API-app/congress" element={<Congress />} />
+          <Route path="/API-app/parliament" element={<Parliament />} />
         </Routes>
       </Router>
     </div>
   );
-  //path / is root url
-  //path /congress or path /parliament is url to congress page/parliament page
 }
 
 export default App;
