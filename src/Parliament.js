@@ -185,8 +185,8 @@ const resetMemberInfo = () => {
 </div>
 
 <div className="linkText">
-  <Link to="/congress">explore the US congress</Link>
-  <Link to="/homepage">go back to the homepage</Link>
+  <Link to="/API-app/congress">explore the US congress</Link>
+  <Link to="/API-app">go back to the homepage</Link>
 </div>
 
     </div>
