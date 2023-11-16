@@ -1,5 +1,5 @@
 import React from 'react';
-const NotFound = () => {
+const NotFound = () => { //new component
   return (
     <div>
       <h2 className="parliament-heading">PAGE DOES NOT EXIST</h2>
