@@ -1,124 +1,78 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { setMemberInfo, setInterests, setError } from './slices/ParliamentSlice';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const Parliament = () => {
-  // State hooks for member data
+  const dispatch = useDispatch();
+  const { memberInfo, interests, error } = useSelector((state) => state.parliament);
+
   const [memberName, setMemberName] = useState('');
-  // state to hold the values of the currently searched parliament member's name, gender, party, and membership information
-  const [fullMemberName, setFullMemberName] = useState(null);
-  const [partyInfo, setPartyInfo] = useState(null);
-  const [gender, setGender] = useState(null);
-  const [latestMembership, setLatestMembership] = useState(null);
-  const [startDate, setStartDate] = useState(null);
-  const [membershipEnd, setMembershipEnd] = useState(null);
-  const [membershipStatus, setMembershipStatus] = useState(null);
-  //used for error handling and used in cases where the inputted name is blank or not a part of the api dataset 
-  const [error, setError] = useState(null);
-
-  // State hooks for registered interests data
   const [searchTerm, setSearchTerm] = useState('');
-  const [interests, setInterests] = useState([]);
-  //used for error handling and used in cases where the inputted name is blank or not a part of the api dataset 
-  const [interestsError, setInterestsError] = useState(null);
 
-  // Function to fetch member data from an API
   const fetchMemberData = async (name) => {
     try {
       const response = await fetch(`https://members-api.parliament.uk/api/Members/Search?Name=${encodeURIComponent(name)}&skip=0&take=20`);
       const data = await response.json();
-//states for treaties
+
       if (data.items && data.items.length > 0) {
         const member = data.items[0].value;
-        setFullMemberName(member.nameFullTitle);
-        setGender(member.gender);
-        setPartyInfo(member.latestParty.name);
-        setLatestMembership(member.latestHouseMembership.membershipFrom);
-        setStartDate(member.latestHouseMembership.membershipStartDate);
-        setMembershipEnd(member.latestHouseMembership.membershipEndDate);
-        setMembershipStatus(member.latestHouseMembership.membershipStatus.statusDescription);
+        dispatch(setMemberInfo({
+          fullMemberName: member.nameFullTitle,
+          gender: member.gender,
+          partyInfo: member.latestParty.name,
+          latestMembership: member.latestHouseMembership.membershipFrom,
+          startDate: member.latestHouseMembership.membershipStartDate,
+          membershipEnd: member.latestHouseMembership.membershipEndDate,
+          membershipStatus: member.latestHouseMembership.membershipStatus.statusDescription,
+        }));
       } else {
-        setError('Party information not found for this member.');
+        dispatch(setError('Party information not found for this member.'));
       }
     } catch (e) {
-      setError('Failed to fetch party information.');
+      dispatch(setError('Failed to fetch party information.'));
       console.error(e);
     }
   };
 
-  // Function to fetch registered interests data from an API
   const fetchInterestsData = async (term) => {
     try {
-        //Making an HTTP request to the Parliament api
       const response = await fetch(`https://members-api.parliament.uk/api/LordsInterests/Register?searchTerm=${encodeURIComponent(term)}`);
-        //response is parsed here
       const data = await response.json();
-        // Check if the response contains items
+
       if (data.items) {
-        setInterests(data.items);
+        dispatch(setInterests(data.items));
       } else {
-          // if the response body does not contain any items at all, display this error message 
-        setInterestsError('No interests found for the specified search term.');
+        dispatch(setError('No interests found for the specified search term.'));
       }
     } catch (e) {
-      // catch any potential errors and display it
-      setInterestsError('Failed to fetch interests information.');
+      dispatch(setError('Failed to fetch interests information.'));
       console.error(e);
     }
   };
 
-  // Function to handle member form submission
   const handleMemberSubmit = (event) => {
     event.preventDefault();
-    resetMemberInfo();
+    dispatch(setMemberInfo(null)); // Reset memberInfo state
+    dispatch(setError(null)); // Reset error state
     fetchMemberData(memberName);
   };
 
-  // Function to handle registered interests form submission
   const handleInterestsSubmit = (event) => {
     event.preventDefault();
-    resetInterestsInfo();
+    dispatch(setInterests([])); // Reset interests state
+    dispatch(setError(null)); // Reset error state
     fetchInterestsData(searchTerm);
   };
 
-//Reset the previous members data to be null to allow for new data or error message to be displayed
-const resetMemberInfo = () => {
-    setFullMemberName(null);
-    setPartyInfo(null);
-    setGender(null);
-    setLatestMembership(null);
-    setStartDate(null);
-    setMembershipEnd(null);
-    setMembershipStatus(null);
-    setError(null);
-  };
-
-  // Function to reset registered interests states
-  const resetInterestsInfo = () => {
-    setInterests([]);
-    setInterestsError(null);
-  };
-
-  // Function to update memberName state when user input changes
   const handleMemberNameChange = (event) => {
     setMemberName(event.target.value);
   };
 
-  // Function to update searchTerm state when user input changes
   const handleSearchTermChange = (event) => {
     setSearchTerm(event.target.value);
   };
-  {
-    /* This section displays the member's 
-  full name
-  party
-  gender
-  latestmembership placement
-  latest membership start date
-  latest membership end date if they are not currently in office
-  membership status
-  
-  */}
+
   return (
 <div className="parliament-container">
 <h2 className="parliament-heading">Party Information</h2>
@@ -137,13 +91,27 @@ const resetMemberInfo = () => {
       </form>
 
       {error && <p>Error: {error}</p>}
-      {fullMemberName && <p>Name: {fullMemberName}</p>}
-      {gender && <p>Gender: {gender}</p>}
-      {partyInfo && <p>Party: {partyInfo}</p>}
-      {latestMembership && <p>Latest Membership: {latestMembership}</p>}
-      {startDate && <p>Start Date: {startDate}</p>}
-      {membershipEnd && <p>Membership End: {membershipEnd}</p>}
-      {membershipStatus && <p>Membership Status: {membershipStatus}</p>}
+      {interests && interests.length > 0 && (
+        <div>
+          <p>Name of member with this interest:</p>
+          <ul>
+            {interests.map((interest, index) => (
+              <li key={index}>{interest.value.member.nameFullTitle}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {memberInfo && (
+        <div>
+          <p>Name: {memberInfo.fullMemberName}</p>
+          <p>Gender: {memberInfo.gender}</p>
+          <p>Party: {memberInfo.partyInfo}</p>
+          <p>Latest Membership: {memberInfo.latestMembership}</p>
+          <p>Start Date: {memberInfo.startDate}</p>
+          <p>Membership End: {memberInfo.membershipEnd}</p>
+          <p>Membership Status: {memberInfo.membershipStatus}</p>
+        </div>
+      )}
 <br></br>
 <br></br>
 <br></br>
